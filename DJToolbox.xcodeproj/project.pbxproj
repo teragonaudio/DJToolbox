@@ -14,6 +14,7 @@
 		24C4233A1566653400D55214 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C423391566653400D55214 /* AppDelegate.m */; };
 		24C4233D1566653400D55214 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24C4233B1566653400D55214 /* MainMenu.xib */; };
 		24C423481566B33900D55214 /* Toolbox-icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 24C423471566B33900D55214 /* Toolbox-icon.icns */; };
+		24C423571566F36E00D55214 /* AbletonLiveController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C423561566F36E00D55214 /* AbletonLiveController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,9 @@
 		24C423391566653400D55214 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		24C4233C1566653400D55214 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		24C423471566B33900D55214 /* Toolbox-icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Toolbox-icon.icns"; path = "../Toolbox-icon.icns"; sourceTree = "<group>"; };
+		24C423551566F36E00D55214 /* AbletonLiveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbletonLiveController.h; path = Controllers/AbletonLiveController.h; sourceTree = "<group>"; };
+		24C423561566F36E00D55214 /* AbletonLiveController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbletonLiveController.m; path = Controllers/AbletonLiveController.m; sourceTree = "<group>"; };
+		24C423591566F41A00D55214 /* LibraryLocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LibraryLocationProvider.h; path = Protocols/LibraryLocationProvider.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,10 +88,11 @@
 		24C4232C1566653400D55214 /* DJToolbox */ = {
 			isa = PBXGroup;
 			children = (
-				24C423381566653400D55214 /* AppDelegate.h */,
-				24C423391566653400D55214 /* AppDelegate.m */,
-				24C4233B1566653400D55214 /* MainMenu.xib */,
+				24C423521566F2D500D55214 /* Controllers */,
+				24C423531566F2F800D55214 /* Delegate */,
+				24C423581566F3EE00D55214 /* Protocols */,
 				24C4232D1566653400D55214 /* Supporting Files */,
+				24C423541566F2FF00D55214 /* Views */,
 			);
 			path = DJToolbox;
 			sourceTree = "<group>";
@@ -103,6 +108,40 @@
 				24C423351566653400D55214 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		24C423521566F2D500D55214 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				24C423551566F36E00D55214 /* AbletonLiveController.h */,
+				24C423561566F36E00D55214 /* AbletonLiveController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		24C423531566F2F800D55214 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				24C423381566653400D55214 /* AppDelegate.h */,
+				24C423391566653400D55214 /* AppDelegate.m */,
+			);
+			name = Delegate;
+			sourceTree = "<group>";
+		};
+		24C423541566F2FF00D55214 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				24C4233B1566653400D55214 /* MainMenu.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		24C423581566F3EE00D55214 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				24C423591566F41A00D55214 /* LibraryLocationProvider.h */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,6 +171,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Teragon Audio";
 			};
 			buildConfigurationList = 24C4231C1566653400D55214 /* Build configuration list for PBXProject "DJToolbox" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -171,6 +211,7 @@
 			files = (
 				24C423331566653400D55214 /* main.m in Sources */,
 				24C4233A1566653400D55214 /* AppDelegate.m in Sources */,
+				24C423571566F36E00D55214 /* AbletonLiveController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
