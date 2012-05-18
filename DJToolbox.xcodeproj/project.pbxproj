@@ -1,0 +1,298 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		24C423271566653400D55214 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C423261566653400D55214 /* Cocoa.framework */; };
+		24C423311566653400D55214 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24C4232F1566653400D55214 /* InfoPlist.strings */; };
+		24C423331566653400D55214 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C423321566653400D55214 /* main.m */; };
+		24C423371566653400D55214 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 24C423351566653400D55214 /* Credits.rtf */; };
+		24C4233A1566653400D55214 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C423391566653400D55214 /* AppDelegate.m */; };
+		24C4233D1566653400D55214 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24C4233B1566653400D55214 /* MainMenu.xib */; };
+		24C423481566B33900D55214 /* Toolbox-icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 24C423471566B33900D55214 /* Toolbox-icon.icns */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		24C423221566653400D55214 /* DJToolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DJToolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		24C423261566653400D55214 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		24C423291566653400D55214 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		24C4232A1566653400D55214 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		24C4232B1566653400D55214 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		24C4232E1566653400D55214 /* DJToolbox-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DJToolbox-Info.plist"; sourceTree = "<group>"; };
+		24C423301566653400D55214 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		24C423321566653400D55214 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		24C423341566653400D55214 /* DJToolbox-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DJToolbox-Prefix.pch"; sourceTree = "<group>"; };
+		24C423361566653400D55214 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		24C423381566653400D55214 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		24C423391566653400D55214 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		24C4233C1566653400D55214 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		24C423471566B33900D55214 /* Toolbox-icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Toolbox-icon.icns"; path = "../Toolbox-icon.icns"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		24C4231F1566653400D55214 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24C423271566653400D55214 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		24C423171566653400D55214 = {
+			isa = PBXGroup;
+			children = (
+				24C4232C1566653400D55214 /* DJToolbox */,
+				24C423251566653400D55214 /* Frameworks */,
+				24C423231566653400D55214 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		24C423231566653400D55214 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				24C423221566653400D55214 /* DJToolbox.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		24C423251566653400D55214 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24C423261566653400D55214 /* Cocoa.framework */,
+				24C423281566653400D55214 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		24C423281566653400D55214 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24C423291566653400D55214 /* AppKit.framework */,
+				24C4232A1566653400D55214 /* CoreData.framework */,
+				24C4232B1566653400D55214 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		24C4232C1566653400D55214 /* DJToolbox */ = {
+			isa = PBXGroup;
+			children = (
+				24C423381566653400D55214 /* AppDelegate.h */,
+				24C423391566653400D55214 /* AppDelegate.m */,
+				24C4233B1566653400D55214 /* MainMenu.xib */,
+				24C4232D1566653400D55214 /* Supporting Files */,
+			);
+			path = DJToolbox;
+			sourceTree = "<group>";
+		};
+		24C4232D1566653400D55214 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				24C423471566B33900D55214 /* Toolbox-icon.icns */,
+				24C4232E1566653400D55214 /* DJToolbox-Info.plist */,
+				24C4232F1566653400D55214 /* InfoPlist.strings */,
+				24C423321566653400D55214 /* main.m */,
+				24C423341566653400D55214 /* DJToolbox-Prefix.pch */,
+				24C423351566653400D55214 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		24C423211566653400D55214 /* DJToolbox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24C423401566653400D55214 /* Build configuration list for PBXNativeTarget "DJToolbox" */;
+			buildPhases = (
+				24C4231E1566653400D55214 /* Sources */,
+				24C4231F1566653400D55214 /* Frameworks */,
+				24C423201566653400D55214 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DJToolbox;
+			productName = DJToolbox;
+			productReference = 24C423221566653400D55214 /* DJToolbox.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		24C423191566653400D55214 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 24C4231C1566653400D55214 /* Build configuration list for PBXProject "DJToolbox" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 24C423171566653400D55214;
+			productRefGroup = 24C423231566653400D55214 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				24C423211566653400D55214 /* DJToolbox */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		24C423201566653400D55214 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24C423311566653400D55214 /* InfoPlist.strings in Resources */,
+				24C423371566653400D55214 /* Credits.rtf in Resources */,
+				24C4233D1566653400D55214 /* MainMenu.xib in Resources */,
+				24C423481566B33900D55214 /* Toolbox-icon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		24C4231E1566653400D55214 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24C423331566653400D55214 /* main.m in Sources */,
+				24C4233A1566653400D55214 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		24C4232F1566653400D55214 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24C423301566653400D55214 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		24C423351566653400D55214 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24C423361566653400D55214 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		24C4233B1566653400D55214 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24C4233C1566653400D55214 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		24C4233E1566653400D55214 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = "";
+			};
+			name = Debug;
+		};
+		24C4233F1566653400D55214 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = "";
+			};
+			name = Release;
+		};
+		24C423411566653400D55214 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DJToolbox/DJToolbox-Prefix.pch";
+				INFOPLIST_FILE = "DJToolbox/DJToolbox-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		24C423421566653400D55214 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DJToolbox/DJToolbox-Prefix.pch";
+				INFOPLIST_FILE = "DJToolbox/DJToolbox-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		24C4231C1566653400D55214 /* Build configuration list for PBXProject "DJToolbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24C4233E1566653400D55214 /* Debug */,
+				24C4233F1566653400D55214 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24C423401566653400D55214 /* Build configuration list for PBXNativeTarget "DJToolbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24C423411566653400D55214 /* Debug */,
+				24C423421566653400D55214 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 24C423191566653400D55214 /* Project object */;
+}
