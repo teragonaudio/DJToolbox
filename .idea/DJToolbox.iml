@@ -4,6 +4,9 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
     </content>
+    <content url="file://$USER_HOME$/Library/Caches/appCode10/DerivedData/DJToolbox-3a782337/Build/Products/Debug/DJToolbox.app">
+      <sourceFolder url="file://$USER_HOME$/Library/Caches/appCode10/DerivedData/DJToolbox-3a782337/Build/Products/Debug/DJToolbox.app" isTestSource="false" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
