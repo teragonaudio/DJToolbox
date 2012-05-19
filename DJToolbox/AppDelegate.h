@@ -11,12 +11,32 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, LibraryLocationProvider>
 
+#pragma mark Main Window Controls
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet NSComboBox *libraryComboBox;
+@property (assign) IBOutlet NSTextField *statusTextField;
+@property (assign) IBOutlet NSProgressIndicator *progressIndicator;
+- (IBAction)browseLibraryLocation:(id)sender;
 
-@property (assign) IBOutlet NSTextField *abletonPlaylistOutputFolderTextField;
+#pragma mark Ableton Live Tab
+@property (assign) IBOutlet NSTextField *unwarpedTracksOutputFolderTextField;
+@property (assign) IBOutlet NSBrowser *orphanedAsdsBrowser;
+- (IBAction)browseUnwarpedTracksOutputFolder:(id)sender;
+- (IBAction)generateUnwarpedTracksPlaylist:(id)sender;
+- (IBAction)findOrphanedAsds:(id)sender;
 
-- (IBAction)abletonBrowsePlaylistOutputFolder:(id)sender;
-- (IBAction)abletonGeneratePlaylist:(id)sender;
+#pragma mark Dropbox Tab
+@property (assign) IBOutlet NSBrowser *conflictedFilesBrowser;
+- (IBAction)findConflictedFiles:(id)sender;
+- (IBAction)useMineForConflictedFile:(id)sender;
+- (IBAction)useTheirsForConflictedFile:(id)sender;
+
+#pragma mark Finder Tab
+- (IBAction)cleanJunkFiles:(id)sender;
+
+#pragma mark iTunes Tab
+@property (assign) IBOutlet NSBrowser *orphanedTracksBrowser;
+- (IBAction)findOrphanedFiles:(id)sender;
+- (IBAction)addOrphanedTracksToLibrary:(id)sender;
 
 @end
