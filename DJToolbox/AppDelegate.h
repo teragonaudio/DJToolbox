@@ -12,5 +12,11 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate, LibraryLocationProvider>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSComboBox *libraryComboBox;
+
+@property (assign) IBOutlet NSTextField *abletonPlaylistOutputFolderTextField;
+
+- (IBAction)abletonBrowsePlaylistOutputFolder:(id)sender;
+- (IBAction)abletonGeneratePlaylist:(id)sender;
 
 @end

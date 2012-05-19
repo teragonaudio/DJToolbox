@@ -11,15 +11,30 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize libraryComboBox = _libraryComboBox;
+@synthesize abletonPlaylistOutputFolderTextField = _abletonPlaylistOutputFolderTextField;
 
-- (void)dealloc
-{
-    [super dealloc];
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 }
-	
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-  // Insert code here to initialize your application
+
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
+  return YES;
+}
+
+- (NSString *)getiTunesLibraryLocation {
+  return self.libraryComboBox.stringValue;
+}
+
+- (IBAction)abletonBrowsePlaylistOutputFolder:(id)sender {
+
+}
+
+- (IBAction)abletonGeneratePlaylist:(id)sender {
+}
+
+- (void)dealloc {
+  [super dealloc];
 }
 
 @end
