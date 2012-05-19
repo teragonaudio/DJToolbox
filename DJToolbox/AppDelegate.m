@@ -10,6 +10,7 @@
 
 @implementation AppDelegate
 
+@synthesize currentLibraryLocation = _currentLibraryLocation;
 @synthesize window = _window;
 @synthesize libraryComboBox = _libraryComboBox;
 @synthesize statusTextField = _statusTextField;
@@ -21,6 +22,10 @@
 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+  NSArray *pastLibraryLocations = [userDefaults arrayForKey:kDefaultsKeyPastLibraryLocations];
+  [self.libraryComboBox addItemsWithObjectValues:pastLibraryLocations];
+  [self.libraryComboBox setStringValue:[userDefaults objectForKey:kDefaultsKeyLastLibraryLocation]];
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
@@ -29,11 +34,34 @@
 
 
 - (NSString *)getiTunesLibraryLocation {
-  return self.libraryComboBox.stringValue;
+  return self.currentLibraryLocation;
 }
 
 - (IBAction)browseLibraryLocation:(id)sender {
+  NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+  openPanel.canChooseFiles = NO;
+  openPanel.canChooseDirectories = YES;
+  openPanel.allowsMultipleSelection = NO;
+  [openPanel runModal];
+  [self.libraryComboBox addItemWithObjectValue:openPanel.filename];
+  [self.libraryComboBox setStringValue:openPanel.filename];
 
+  self.currentLibraryLocation = openPanel.filename;
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+  NSArray *pastLibraryLocations = [userDefaults arrayForKey:kDefaultsKeyPastLibraryLocations];
+  NSMutableArray *savedLibraryLocations = [NSMutableArray arrayWithArray:pastLibraryLocations];
+  BOOL shouldAddLocation = YES;
+  for(NSString *location in savedLibraryLocations) {
+    if([location isEqualToString:self.currentLibraryLocation]) {
+      shouldAddLocation = NO;
+      break;
+    }
+  }
+  if(shouldAddLocation) {
+    [savedLibraryLocations addObject:self.currentLibraryLocation];
+    [userDefaults setObject:savedLibraryLocations forKey:kDefaultsKeyPastLibraryLocations];
+  }
+  [userDefaults setObject:self.currentLibraryLocation forKey:kDefaultsKeyLastLibraryLocation];
 }
 
 - (IBAction)browseUnwarpedTracksOutputFolder:(id)sender {

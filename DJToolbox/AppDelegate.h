@@ -9,7 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "LibraryLocationProvider.h"
 
+static NSString *const kDefaultsKeyPastLibraryLocations = @"Past Library Locations";
+static NSString *const kDefaultsKeyLastLibraryLocation = @"Last Library Location";
+
 @interface AppDelegate : NSObject <NSApplicationDelegate, LibraryLocationProvider>
+
+#pragma mark Internal Members
+@property (assign, nonatomic) NSString *currentLibraryLocation;
 
 #pragma mark Main Window Controls
 @property (assign) IBOutlet NSWindow *window;
