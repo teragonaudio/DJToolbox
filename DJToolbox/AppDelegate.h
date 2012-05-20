@@ -20,6 +20,7 @@ static NSString *const kiTunesTopLevelSubfolder = @"/iTunes Media/Music";
 
 #pragma mark Internal Members
 @property (assign, nonatomic) NSString *currentLibraryLocation;
+@property (assign, nonatomic) NSString *unwarpedTracksOutputLocation;
 @property (readonly) NSArray *recognizedAudioFileExtensions;
 
 #pragma mark Main Window Controls

@@ -11,6 +11,7 @@
 @implementation AppDelegate
 
 @synthesize currentLibraryLocation = _currentLibraryLocation;
+@synthesize unwarpedTracksOutputLocation = _unwarpedTracksOutputLocation;
 
 @synthesize window = _window;
 @synthesize libraryComboBox = _libraryComboBox;
@@ -43,12 +44,12 @@
 }
 
 - (NSString *)lastUnwarpedTracksOutputFolder {
-  NSString *outputPath = [[NSUserDefaults standardUserDefaults] stringForKey:kDefaultsKeyLastUnwarpedTracksOutputFolder];
-  if(outputPath == nil) {
+  self.unwarpedTracksOutputLocation = [[NSUserDefaults standardUserDefaults] stringForKey:kDefaultsKeyLastUnwarpedTracksOutputFolder];
+  if(self.unwarpedTracksOutputLocation == nil) {
     return [NSHomeDirectory() stringByAppendingString:@"/Desktop"];
   }
   else {
-    return outputPath;
+    return self.unwarpedTracksOutputLocation;
   }
 }
 
@@ -97,6 +98,8 @@
     [userDefaults setObject:savedLibraryLocations forKey:kDefaultsKeyPastLibraryLocations];
   }
   [userDefaults setObject:self.currentLibraryLocation forKey:kDefaultsKeyLastLibraryLocation];
+
+  [self.unwarpedTracksGeneratePlaylistButton setEnabled:(self.currentLibraryLocation && self.unwarpedTracksOutputLocation)];
 }
 
 - (IBAction)browseUnwarpedTracksOutputFolder:(id)sender {
@@ -105,7 +108,9 @@
   openPanel.canChooseDirectories = YES;
   openPanel.allowsMultipleSelection = NO;
   [openPanel runModal];
-  [self.unwarpedTracksOutputFolderTextField setStringValue:openPanel.filename];
+  self.unwarpedTracksOutputLocation = openPanel.filename;
+  [self.unwarpedTracksOutputFolderTextField setStringValue:self.unwarpedTracksOutputLocation];
+  [self.unwarpedTracksGeneratePlaylistButton setEnabled:(self.currentLibraryLocation && self.unwarpedTracksOutputLocation)];
 }
 
 - (NSInteger)searchForUnwarpedTracks:(NSString *)directory outputFile:(FILE *)outputFile numFilesFound:(NSInteger)numFilesFound {
@@ -151,16 +156,19 @@
   NSString *topDirectory = [self.currentLibraryLocation stringByAppendingString:kiTunesTopLevelSubfolder];
   FILE *outputFile = fopen([outputFilePath cStringUsingEncoding:NSASCIIStringEncoding], "w");
   [self setProgressMessage:@"Search started..."];
+  [self.unwarpedTracksGeneratePlaylistButton setEnabled:NO];
   [_progressIndicator startAnimation:sender];
-  NSInteger numFilesFound = 0;
-  [self searchForUnwarpedTracks:topDirectory outputFile:outputFile numFilesFound:numFilesFound];
+  NSInteger numFilesFound = [self searchForUnwarpedTracks:topDirectory outputFile:outputFile numFilesFound:0];
   [_progressIndicator stopAnimation:sender];
+  [self setProgressMessage:[NSString stringWithFormat:@"Done, %d files found", numFilesFound]];
+  [self.unwarpedTracksGeneratePlaylistButton setEnabled:YES];
   fclose(outputFile);
 }
 
 - (IBAction)findOrphanedAsds:(id)sender {
 
 }
+
 
 - (IBAction)findConflictedFiles:(id)sender {
 
@@ -174,9 +182,76 @@
 
 }
 
-- (IBAction)cleanJunkFiles:(id)sender {
 
+- (NSInteger)cleanJunkFiles:(NSString *)directory numFilesCleaned:(NSInteger)numFilesCleaned {
+  NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+  NSError *error;
+  NSArray *directoryContents = [fileManager contentsOfDirectoryAtPath:directory error:&error];
+  for(NSString *item in directoryContents) {
+    NSString *absoluteItemPath = [directory stringByAppendingFormat:@"/%@", item];
+    BOOL isDirectory = NO;
+    if([fileManager fileExistsAtPath:absoluteItemPath isDirectory:&isDirectory]) {
+      if(isDirectory) {
+        if([item isEqualToString:@"__MACOSX"]) {
+          if([fileManager removeItemAtPath:item error:&error]) {
+            numFilesCleaned++;
+            if(numFilesCleaned == 1) {
+              [self setProgressMessage:[NSString stringWithFormat:@"%d item cleaned", numFilesCleaned]];
+            }
+            else {
+              [self setProgressMessage:[NSString stringWithFormat:@"%d items cleaned", numFilesCleaned]];
+            }
+          }
+          else {
+            NSLog(@"Failed removing file: %@", error);
+          }
+        }
+        else {
+          numFilesCleaned = [self cleanJunkFiles:absoluteItemPath numFilesCleaned:numFilesCleaned];
+        }
+      }
+      else {
+        BOOL shouldRemoveFile = NO;
+        if([item isEqualToString:@".DS_Store"]) {
+          shouldRemoveFile = YES;
+        }
+        else {
+          NSRange matchStart = [item rangeOfString:@"._" options:NSAnchoredSearch];
+          if(matchStart.location != NSNotFound) {
+            shouldRemoveFile = YES;
+          }
+        }
+
+        if(shouldRemoveFile) {
+          if([fileManager removeItemAtPath:absoluteItemPath error:&error]) {
+            numFilesCleaned++;
+            if(numFilesCleaned == 1) {
+              [self setProgressMessage:[NSString stringWithFormat:@"%d item cleaned", numFilesCleaned]];
+            }
+            else {
+              [self setProgressMessage:[NSString stringWithFormat:@"%d items cleaned", numFilesCleaned]];
+            }
+          }
+          else {
+            NSLog(@"Failed removing file: %@", error);
+          }
+        }
+      }
+    }
+  }
+  return numFilesCleaned;
 }
+
+- (IBAction)cleanJunkFiles:(id)sender {
+  [self setProgressMessage:@"Clean started..."];
+  [self.cleanJunkFilesButton setEnabled:NO];
+  [_progressIndicator startAnimation:sender];
+  NSInteger numFilesCleaned = [self cleanJunkFiles:self.currentLibraryLocation numFilesCleaned:0];
+  [_progressIndicator stopAnimation:sender];
+  [self setProgressMessage:[NSString stringWithFormat:@"Done, %d files removed", numFilesCleaned]];
+  [self.cleanJunkFilesButton setEnabled:YES];
+}
+
 
 - (IBAction)findOrphanedFiles:(id)sender {
 
