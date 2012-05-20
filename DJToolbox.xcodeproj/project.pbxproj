@@ -15,6 +15,9 @@
 		24C4233D1566653400D55214 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24C4233B1566653400D55214 /* MainMenu.xib */; };
 		24C423481566B33900D55214 /* Toolbox-icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 24C423471566B33900D55214 /* Toolbox-icon.icns */; };
 		24C423571566F36E00D55214 /* AbletonLiveController.m in Sources */ = {isa = PBXBuildFile; };
+		24C423591566F41A00D55216 /* OrphanedAsdsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C423591566F41A00D55215 /* OrphanedAsdsController.m */; };
+		24C423591566F41A00D55219 /* RevealInFinderCell.m in Sources */ = {isa = PBXBuildFile; };
+		24C423591566F41A00D5521C /* RevealInFinderBrowser.m in Sources */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,8 @@
 		24C4233C1566653400D55214 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		24C423471566B33900D55214 /* Toolbox-icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Toolbox-icon.icns"; path = "../Toolbox-icon.icns"; sourceTree = "<group>"; };
 		24C423591566F41A00D55214 /* LibraryLocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LibraryLocationProvider.h; path = Protocols/LibraryLocationProvider.h; sourceTree = "<group>"; };
+		24C423591566F41A00D55215 /* OrphanedAsdsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrphanedAsdsController.m; sourceTree = "<group>"; };
+		24C423591566F41A00D55217 /* OrphanedAsdsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrphanedAsdsController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +116,8 @@
 		24C423521566F2D500D55214 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				24C423591566F41A00D55217 /* OrphanedAsdsController.h */,
+				24C423591566F41A00D55215 /* OrphanedAsdsController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -208,6 +215,9 @@
 				24C423331566653400D55214 /* main.m in Sources */,
 				24C4233A1566653400D55214 /* AppDelegate.m in Sources */,
 				24C423571566F36E00D55214 /* AbletonLiveController.m in Sources */,
+				24C423591566F41A00D55216 /* OrphanedAsdsController.m in Sources */,
+				24C423591566F41A00D55219 /* RevealInFinderCell.m in Sources */,
+				24C423591566F41A00D5521C /* RevealInFinderBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
