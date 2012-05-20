@@ -9,6 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import "LibraryLocationProvider.h"
 
+@class OrphanedAsdsController;
+
 static NSString *const kDefaultsKeyPastLibraryLocations = @"Past Library Locations";
 static NSString *const kDefaultsKeyLastLibraryLocation = @"Last Library Location";
 static NSString *const kDefaultsKeyLastUnwarpedTracksOutputFolder = @"Last Unwarped Tracks Output Folder";
@@ -35,6 +37,7 @@ static NSString *const kiTunesTopLevelSubfolder = @"/iTunes Media/Music";
 @property (assign) IBOutlet NSButton *unwarpedTracksGeneratePlaylistButton;
 @property (assign) IBOutlet NSBrowser *orphanedAsdsBrowser;
 @property (assign) IBOutlet NSButton *findOrphanedAsdsButton;
+@property (assign, nonatomic) OrphanedAsdsController *orphanedAsdsController;
 - (IBAction)browseUnwarpedTracksOutputFolder:(id)sender;
 - (IBAction)generateUnwarpedTracksPlaylist:(id)sender;
 - (IBAction)findOrphanedAsds:(id)sender;

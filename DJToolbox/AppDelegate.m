@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "OrphanedAsdsController.h"
 
 @implementation AppDelegate
 
@@ -22,6 +23,7 @@
 @synthesize unwarpedTracksGeneratePlaylistButton = _unwarpedTracksGeneratePlaylistButton;
 @synthesize orphanedAsdsBrowser = _orphanedAsdsBrowser;
 @synthesize findOrphanedAsdsButton = _findOrphanedAsdsButton;
+@synthesize orphanedAsdsController = _orphanedAsdsController;
 
 @synthesize conflictedFilesBrowser = _conflictedFilesBrowser;
 @synthesize findConflictedFilesButton = _findConflictedFilesButton;
@@ -53,6 +55,12 @@
   }
 }
 
+- (void)revealFileInFinder:(id)sender {
+  NSBrowser *browser = sender;
+  NSString *selectedFile = [[browser selectedCell] title];
+  [[NSWorkspace sharedWorkspace] selectFile:selectedFile inFileViewerRootedAtPath: nil];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
   NSArray *pastLibraryLocations = [userDefaults arrayForKey:kDefaultsKeyPastLibraryLocations];
@@ -61,6 +69,9 @@
   [self.libraryComboBox setStringValue:self.currentLibraryLocation];
 
   [self.unwarpedTracksOutputFolderTextField setStringValue:[self lastUnwarpedTracksOutputFolder]];
+  self.orphanedAsdsController = [[OrphanedAsdsController alloc] init];
+  [self.orphanedAsdsBrowser setDelegate:self.orphanedAsdsController];
+  [self.orphanedAsdsBrowser setAction:@selector(revealFileInFinder:)];
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
@@ -165,8 +176,51 @@
   fclose(outputFile);
 }
 
-- (IBAction)findOrphanedAsds:(id)sender {
+- (NSInteger)searchForOrphanedAsds:(NSString *)directory numFilesFound:(NSInteger)numFilesFound {
+  NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+  NSError *error;
+  NSArray *directoryContents = [fileManager contentsOfDirectoryAtPath:directory error:&error];
+  for(NSString *item in directoryContents) {
+    NSString *absoluteItemPath = [directory stringByAppendingFormat:@"/%@", item];
+    BOOL isDirectory = NO;
+    if([fileManager fileExistsAtPath:absoluteItemPath isDirectory:&isDirectory]) {
+      if(isDirectory) {
+        numFilesFound = [self searchForOrphanedAsds:absoluteItemPath numFilesFound:numFilesFound];
+      }
+      else {
+        NSRange lastDot = [absoluteItemPath rangeOfString:@"." options:NSBackwardsSearch];
+        if(lastDot.location != NSNotFound) {
+          NSString *extension = [absoluteItemPath substringFromIndex:lastDot.location + 1];
+          if([extension isEqualToString:@"asd"]) {
+            NSString *musicFileName = [absoluteItemPath substringToIndex:lastDot.location];
+            if(![fileManager fileExistsAtPath:musicFileName]) {
+              [self.orphanedAsdsController addOrphanedAsd:absoluteItemPath];
+              numFilesFound++;
+              if(numFilesFound == 1) {
+                [self setProgressMessage:[NSString stringWithFormat:@"%d file found", numFilesFound]];
+              }
+              else {
+                [self setProgressMessage:[NSString stringWithFormat:@"%d files found", numFilesFound]];
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  return numFilesFound;
+}
 
+- (IBAction)findOrphanedAsds:(id)sender {
+  [self setProgressMessage:@"Search started..."];
+  [self.findOrphanedAsdsButton setEnabled:NO];
+  [_progressIndicator startAnimation:sender];
+  NSString *topDirectory = [self.currentLibraryLocation stringByAppendingString:kiTunesTopLevelSubfolder];
+  NSInteger numFilesFound = [self searchForOrphanedAsds:topDirectory numFilesFound:0];
+  [self.orphanedAsdsBrowser reloadColumn:0];
+  [_progressIndicator stopAnimation:sender];
+  [self setProgressMessage:[NSString stringWithFormat:@"Done, %d files found", numFilesFound]];
+  [self.findOrphanedAsdsButton setEnabled:YES];
 }
 
 
@@ -263,6 +317,7 @@
 
 
 - (void)dealloc {
+  [_orphanedAsdsController release];
   [super dealloc];
 }
 

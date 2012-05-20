@@ -7,6 +7,10 @@
 
 #import <Foundation/Foundation.h>
 
+@interface OrphanedAsdsController : NSObject <NSBrowserDelegate>
+@property (assign, nonatomic) NSMutableArray *orphanedAsds;
+@property (readonly) NSInteger count;
 
-@interface OrphanedAsdsController : NSObject
+- (void)addOrphanedAsd:(NSString *)filename;
+
 @end
