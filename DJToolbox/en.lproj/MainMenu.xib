@@ -443,7 +443,7 @@
 																<string key="NSFrame">{{380, 6}, {100, 32}}</string>
 																<reference key="NSSuperview" ref="59728096"/>
 																<reference key="NSWindow"/>
-																<reference key="NSNextKeyView" ref="580940834"/>
+																<reference key="NSNextKeyView" ref="296612999"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSButtonCell" key="NSCell" id="427806666">
 																	<int key="NSCellFlags">67239424</int>
@@ -542,7 +542,7 @@
 																<int key="NSvFlags">1292</int>
 																<string key="NSFrame">{{378, 6}, {100, 32}}</string>
 																<reference key="NSSuperview" ref="639411077"/>
-																<reference key="NSNextKeyView" ref="580940834"/>
+																<reference key="NSNextKeyView" ref="296612999"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSButtonCell" key="NSCell" id="1003723248">
 																	<int key="NSCellFlags">67239424</int>
@@ -649,7 +649,7 @@
 												<int key="NSvFlags">268</int>
 												<string key="NSFrame">{{356, 355}, {140, 32}}</string>
 												<reference key="NSSuperview" ref="434824036"/>
-												<reference key="NSNextKeyView" ref="580940834"/>
+												<reference key="NSNextKeyView" ref="296612999"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="634291243">
 													<int key="NSCellFlags">67239424</int>
@@ -735,7 +735,7 @@
 																<int key="NSvFlags">1292</int>
 																<string key="NSFrame">{{379, 5}, {100, 32}}</string>
 																<reference key="NSSuperview" ref="704311817"/>
-																<reference key="NSNextKeyView" ref="580940834"/>
+																<reference key="NSNextKeyView" ref="296612999"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSButtonCell" key="NSCell" id="835452285">
 																	<int key="NSCellFlags">67239424</int>
@@ -827,7 +827,6 @@
 							<string key="NSFrame">{{517, 7}, {16, 16}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<int key="NSpiFlags">28938</int>
 							<double key="NSMaxValue">100</double>
 						</object>
@@ -1203,6 +1202,70 @@
 						<reference key="destination" ref="1065808802"/>
 					</object>
 					<int key="connectionID">699</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">findOrphanedTracksButton</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="759429089"/>
+					</object>
+					<int key="connectionID">700</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">addOrphanedTracksToLibraryButton</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="889000221"/>
+					</object>
+					<int key="connectionID">701</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">cleanJunkFilesButton</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="56985156"/>
+					</object>
+					<int key="connectionID">702</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">conflictedFilesUseMineButton</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="863513593"/>
+					</object>
+					<int key="connectionID">703</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">conflictedFilesUseTheirsButton</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="934260493"/>
+					</object>
+					<int key="connectionID">704</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">findConflictedFilesButton</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="894968490"/>
+					</object>
+					<int key="connectionID">705</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">findOrphanedAsdsButton</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="490274423"/>
+					</object>
+					<int key="connectionID">706</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">unwarpedTracksGeneratePlaylistButton</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="1065808802"/>
+					</object>
+					<int key="connectionID">707</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1811,7 +1874,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">699</int>
+			<int key="maxID">707</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1873,19 +1936,55 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="addOrphanedTracksToLibraryButton">NSButton</string>
+						<string key="cleanJunkFilesButton">NSButton</string>
 						<string key="conflictedFilesBrowser">NSBrowser</string>
+						<string key="conflictedFilesUseMineButton">NSButton</string>
+						<string key="conflictedFilesUseTheirsButton">NSButton</string>
+						<string key="findConflictedFilesButton">NSButton</string>
+						<string key="findOrphanedAsdsButton">NSButton</string>
+						<string key="findOrphanedTracksButton">NSButton</string>
 						<string key="libraryComboBox">NSComboBox</string>
 						<string key="orphanedAsdsBrowser">NSBrowser</string>
 						<string key="orphanedTracksBrowser">NSBrowser</string>
 						<string key="progressIndicator">NSProgressIndicator</string>
 						<string key="statusTextField">NSTextField</string>
+						<string key="unwarpedTracksGeneratePlaylistButton">NSButton</string>
 						<string key="unwarpedTracksOutputFolderTextField">NSTextField</string>
 						<string key="window">NSWindow</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="addOrphanedTracksToLibraryButton">
+							<string key="name">addOrphanedTracksToLibraryButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="cleanJunkFilesButton">
+							<string key="name">cleanJunkFilesButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="conflictedFilesBrowser">
 							<string key="name">conflictedFilesBrowser</string>
 							<string key="candidateClassName">NSBrowser</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="conflictedFilesUseMineButton">
+							<string key="name">conflictedFilesUseMineButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="conflictedFilesUseTheirsButton">
+							<string key="name">conflictedFilesUseTheirsButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="findConflictedFilesButton">
+							<string key="name">findConflictedFilesButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="findOrphanedAsdsButton">
+							<string key="name">findOrphanedAsdsButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="findOrphanedTracksButton">
+							<string key="name">findOrphanedTracksButton</string>
+							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="libraryComboBox">
 							<string key="name">libraryComboBox</string>
@@ -1906,6 +2005,10 @@
 						<object class="IBToOneOutletInfo" key="statusTextField">
 							<string key="name">statusTextField</string>
 							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="unwarpedTracksGeneratePlaylistButton">
+							<string key="name">unwarpedTracksGeneratePlaylistButton</string>
+							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="unwarpedTracksOutputFolderTextField">
 							<string key="name">unwarpedTracksOutputFolderTextField</string>
