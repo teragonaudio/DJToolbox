@@ -18,6 +18,7 @@
 		24C423591566F41A00D55216 /* OrphanedAsdsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C423591566F41A00D55215 /* OrphanedAsdsController.m */; };
 		24C423591566F41A00D55219 /* RevealInFinderCell.m in Sources */ = {isa = PBXBuildFile; };
 		24C423591566F41A00D5521C /* RevealInFinderBrowser.m in Sources */ = {isa = PBXBuildFile; };
+		24C423591566F41A00D5521F /* OrphanedTracksController.m in Sources */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -220,6 +221,7 @@
 				24C423591566F41A00D55216 /* OrphanedAsdsController.m in Sources */,
 				24C423591566F41A00D55219 /* RevealInFinderCell.m in Sources */,
 				24C423591566F41A00D5521C /* RevealInFinderBrowser.m in Sources */,
+				24C423591566F41A00D5521F /* OrphanedTracksController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

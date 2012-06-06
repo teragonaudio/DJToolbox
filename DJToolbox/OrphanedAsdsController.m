@@ -8,8 +8,12 @@
 #import "OrphanedAsdsController.h"
 
 @interface OrphanedAsdsController ()
+
+@property (assign, nonatomic) NSMutableArray *orphanedAsds;
 @property (assign, nonatomic) NSMutableArray *displayNames;
+
 @end
+
 
 @implementation OrphanedAsdsController
 
@@ -43,10 +47,6 @@
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-  return [self count];
-}
-
-- (NSInteger)count {
   return self.orphanedAsds ? [self.orphanedAsds count] : 0;
 }
 

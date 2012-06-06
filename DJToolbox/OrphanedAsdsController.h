@@ -9,8 +9,6 @@
 #import "FilePathnameProvider.h"
 
 @interface OrphanedAsdsController : NSObject <NSTableViewDelegate, NSTableViewDataSource, FilePathnameProvider>
-@property (assign, nonatomic) NSMutableArray *orphanedAsds;
-@property (readonly) NSInteger count;
 
 - (void)addOrphanedAsd:(NSString *)filename libraryPath:(NSString *)libraryPath;
 - (void)clearOrphanedAsds;

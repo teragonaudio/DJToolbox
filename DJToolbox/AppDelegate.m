@@ -35,6 +35,7 @@
 @synthesize findOrphanedTracksButton = _findOrphanedTracksButton;
 @synthesize addOrphanedTracksToLibraryButton = _addOrphanedTracksToLibraryButton;
 @synthesize orphanedTracksBrowser = _orphanedTracksBrowser;
+@synthesize orphanedTracksController = _orphanedTracksController;
 
 
 - (NSString *)getiTunesLibraryLocation {
@@ -74,6 +75,10 @@
   [self.orphanedAsdsBrowser setDelegate:self.orphanedAsdsController];
   [self.orphanedAsdsBrowser setDataSource:self.orphanedAsdsController];
   [self.orphanedAsdsBrowser setAction:@selector(revealFileInFinder:)];
+
+  self.orphanedTracksController = [[OrphanedAsdsController alloc] init];
+  [self.orphanedTracksBrowser setDelegate:self.orphanedTracksController];
+  [self.orphanedTracksBrowser setDataSource:self.orphanedTracksController];
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
@@ -218,6 +223,7 @@
   [self setProgressMessage:@"Search started..."];
   [self.findOrphanedAsdsButton setEnabled:NO];
   [_progressIndicator startAnimation:sender];
+  [self.orphanedAsdsController clearOrphanedAsds];
   NSString *topDirectory = [self.currentLibraryLocation stringByAppendingString:kiTunesTopLevelSubfolder];
   NSInteger numFilesFound = [self searchForOrphanedAsds:topDirectory numFilesFound:0];
   [self.orphanedAsdsBrowser reloadData];
@@ -310,8 +316,92 @@
 }
 
 
-- (IBAction)findOrphanedFiles:(id)sender {
+- (NSString *)iTunesLocationString:(NSURL *)fileUrl {
+  NSString *xmlAttrStringNotSafe = [NSString stringWithFormat:@"<key>Location</key><string>%@</string>", fileUrl];
+  NSString *xmlAttrStringReplaced = [xmlAttrStringNotSafe stringByReplacingOccurrencesOfString:@"&" withString:@"&#38;"];
+  NSString *result = [xmlAttrStringReplaced lowercaseString];
+  return result;
+}
 
+- (NSInteger)searchForOrphanedTracks:(NSString *)directory numFilesFound:(NSInteger)numFilesFound libraryContents:(const NSString *)libraryContents {
+  NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+  NSError *error;
+  NSArray *directoryContents = [fileManager contentsOfDirectoryAtPath:directory error:&error];
+  NSString *libraryPathDisplay = [self.currentLibraryLocation stringByAppendingString:@"/iTunes Media/Music"];
+
+  for(NSString *item in directoryContents) {
+    NSString *absoluteItemPath = [directory stringByAppendingFormat:@"/%@", item];
+    BOOL isDirectory = NO;
+    if([fileManager fileExistsAtPath:absoluteItemPath isDirectory:&isDirectory]) {
+      if(isDirectory) {
+        numFilesFound = [self searchForOrphanedTracks:absoluteItemPath numFilesFound:numFilesFound libraryContents:libraryContents];
+      }
+      else {
+        NSRange lastDot = [absoluteItemPath rangeOfString:@"." options:NSBackwardsSearch];
+        if(lastDot.location != NSNotFound) {
+          NSString *extension = [absoluteItemPath substringFromIndex:lastDot.location + 1];
+          if([extension isEqualToString:@"asd"]) {
+            continue;
+          }
+          else if([self.recognizedAudioFileExtensions containsObject:[extension lowercaseString]]) {
+            NSURL *fileUrl = [NSURL fileURLWithPath:absoluteItemPath];
+            NSString *locationXmlAttr = [self iTunesLocationString:fileUrl];
+            NSRange foundRange = [libraryContents rangeOfString:locationXmlAttr];
+            if(foundRange.location == NSNotFound) {
+              [self.orphanedTracksController addOrphanedAsd:absoluteItemPath libraryPath:libraryPathDisplay];
+              numFilesFound++;
+              if(numFilesFound == 1) {
+                [self setProgressMessage:[NSString stringWithFormat:@"%d file found", numFilesFound]];
+              }
+              else {
+                [self setProgressMessage:[NSString stringWithFormat:@"%d files found", numFilesFound]];
+              }
+              NSLog(@"%@", fileUrl);
+            }
+          }
+        }
+      }
+    }
+  }
+  return numFilesFound;
+}
+
+- (NSString *)readiTunesLibrary:(NSString *)libraryLocation {
+  NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+  NSString *iTunesLibraryLocation = [libraryLocation stringByAppendingString:@"/iTunes Library.xml"];
+  if(![fileManager fileExistsAtPath:iTunesLibraryLocation]) {
+    // Windows location, sometimes used on OSX as well
+    iTunesLibraryLocation = [self.currentLibraryLocation stringByAppendingString:@"/iTunes Library.itl"];
+    if(![fileManager fileExistsAtPath:iTunesLibraryLocation]) {
+      return nil;
+    }
+  }
+
+  NSError *error;
+  NSString *fileContents = [NSString stringWithContentsOfFile:iTunesLibraryLocation encoding:NSUTF8StringEncoding error:&error];
+  // TODO: Check error code
+  return [fileContents lowercaseString];
+}
+
+- (IBAction)findOrphanedFiles:(id)sender {
+  [self setProgressMessage:@"Search started..."];
+  [self.findOrphanedTracksButton setEnabled:NO];
+  [_progressIndicator startAnimation:sender];
+  [self.orphanedTracksController clearOrphanedAsds];
+
+  const NSString *libraryContents = [self readiTunesLibrary:self.currentLibraryLocation];
+  if(libraryContents == nil) {
+    [_progressIndicator stopAnimation:sender];
+    [self setProgressMessage:@"Could not load iTunes library!"];
+    return;
+  }
+
+  NSString *topDirectory = [self.currentLibraryLocation stringByAppendingString:kiTunesTopLevelSubfolder];
+  NSInteger numFilesFound = [self searchForOrphanedTracks:topDirectory numFilesFound:0 libraryContents:libraryContents];
+  [self.orphanedTracksBrowser reloadData];
+  [_progressIndicator stopAnimation:sender];
+  [self setProgressMessage:[NSString stringWithFormat:@"Done, %d files found", numFilesFound]];
+  [self.findOrphanedTracksButton setEnabled:YES];
 }
 
 - (IBAction)addOrphanedTracksToLibrary:(id)sender {
@@ -321,6 +411,7 @@
 
 - (void)dealloc {
   [_orphanedAsdsController release];
+  [_orphanedTracksController release];
   [super dealloc];
 }
 

@@ -58,7 +58,8 @@ static NSString *const kiTunesTopLevelSubfolder = @"/iTunes Media/Music";
 #pragma mark iTunes Tab
 @property (assign) IBOutlet NSButton *findOrphanedTracksButton;
 @property (assign) IBOutlet NSButton *addOrphanedTracksToLibraryButton;
-@property (assign) IBOutlet NSBrowser *orphanedTracksBrowser;
+@property (assign) IBOutlet NSTableView *orphanedTracksBrowser;
+@property (assign, nonatomic) OrphanedAsdsController *orphanedTracksController;
 - (IBAction)findOrphanedFiles:(id)sender;
 - (IBAction)addOrphanedTracksToLibrary:(id)sender;
 
