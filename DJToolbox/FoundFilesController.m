@@ -55,6 +55,15 @@
   [self.displayNames addObject:[filename substringFromIndex:libraryPath.length]];
 }
 
+- (void)removeFile:(NSString *)filename {
+  for(NSUInteger i = 0; i < [self.orphanedAsds count]; i++) {
+    if([[self.orphanedAsds objectAtIndex:i] isEqualToString:filename]) {
+      [self.orphanedAsds removeObjectAtIndex:i];
+      [self.displayNames removeObjectAtIndex:i];
+    }
+  }
+}
+
 - (void)clearOrphanedAsds {
   [self.orphanedAsds removeAllObjects];
   [self.displayNames removeAllObjects];

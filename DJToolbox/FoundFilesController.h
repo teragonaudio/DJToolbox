@@ -11,6 +11,7 @@
 @interface FoundFilesController : NSObject <NSTableViewDelegate, NSTableViewDataSource, FilePathnameProvider>
 
 - (void)addOrphanedAsd:(NSString *)filename libraryPath:(NSString *)libraryPath;
+- (void)removeFile:(NSString *)filename;
 - (void)clearOrphanedAsds;
 
 @end

@@ -406,7 +406,28 @@
 }
 
 - (IBAction)addOrphanedTracksToLibrary:(id)sender {
+  NSString *selectedFileSrc = [self.orphanedTracksController pathForSelectedCell:self.orphanedTracksBrowser];
+  NSString *fileDest = [self.currentLibraryLocation stringByAppendingString:@"/iTunes Media/Automatically Add to iTunes/"];
+  NSArray *arguments = [NSArray arrayWithObjects:@"-v", selectedFileSrc, fileDest, nil];
+  [NSTask launchedTaskWithLaunchPath:@"/bin/mv" arguments:arguments];
 
+  NSString *selectedFileAsd = [selectedFileSrc stringByAppendingString:@".asd"];
+  NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+  if([fileManager fileExistsAtPath:selectedFileAsd]) {
+    arguments = [NSArray arrayWithObjects:@"-v", selectedFileAsd, fileDest, nil];
+    [NSTask launchedTaskWithLaunchPath:@"/bin/mv" arguments:arguments];
+    [self setProgressMessage:@"Moved file (and ASD) to auto-add dir"];
+  }
+  else {
+    [self setProgressMessage:@"Moved file to auto-add dir"];
+  }
+
+  [self.orphanedTracksController removeFile:selectedFileSrc];
+  [self.orphanedTracksBrowser reloadData];
+}
+
+- (IBAction)revealOrphanedTracksInFinder:(id)sender {
+  [self revealFileInFinder:self.orphanedTracksBrowser];
 }
 
 
