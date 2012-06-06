@@ -60,7 +60,7 @@
   NSTableView *tableView = sender;
   id<FilePathnameProvider> filePathnameProvider = (id <FilePathnameProvider>)tableView.dataSource;
   NSString *selectedFile = [filePathnameProvider pathForSelectedCell:tableView];
-  [[NSWorkspace sharedWorkspace] selectFile:selectedFile inFileViewerRootedAtPath: nil];
+  [[NSWorkspace sharedWorkspace] selectFile:selectedFile inFileViewerRootedAtPath:nil];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
