@@ -7,62 +7,56 @@
 
 #import "OrphanedAsdsController.h"
 
+@interface OrphanedAsdsController ()
+@property (assign, nonatomic) NSMutableArray *displayNames;
+@end
 
 @implementation OrphanedAsdsController
 
 @synthesize orphanedAsds = _orphanedAsds;
+@synthesize displayNames = _displayNames;
+
 
 - (id)init {
   self = [super init];
   if(self) {
     self.orphanedAsds = [[NSMutableArray alloc] init];
+    self.displayNames = [[NSMutableArray alloc] init];
   }
 
   return self;
 }
 
-- (NSString *)browser:(NSBrowser *)sender titleOfColumn:(NSInteger)column {
-  return @"File";
+- (void)tableView:(NSTableView *)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+  NSCell *tableCell = cell;
+  [tableCell setTitle:[self.displayNames objectAtIndex:(NSUInteger)row]];
 }
 
-- (CGFloat)browser:(NSBrowser *)browser heightOfRow:(NSInteger)row inColumn:(NSInteger)columnIndex {
-  return 24;
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+  return [self.orphanedAsds objectAtIndex:(NSUInteger)row];
+}
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+  return [self count];
 }
 
 - (NSInteger)count {
   return self.orphanedAsds ? [self.orphanedAsds count] : 0;
 }
 
-- (NSInteger)browser:(NSBrowser *)sender numberOfRowsInColumn:(NSInteger)column {
-  return [self count];
-}
-
-- (id)rootItemForBrowser:(NSBrowser *)browser {
-  NSTextField *textField = [[[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)] autorelease];
-  [textField setStringValue:@"/"];
-  return textField;
-}
-
-- (BOOL)browser:(NSBrowser *)browser isLeafItem:(id)item {
-  return YES;
-}
-
-- (void)browser:(NSBrowser *)sender willDisplayCell:(id)cell atRow:(NSInteger)row column:(NSInteger)column {
-  NSBrowserCell *browserCell = cell;
-  [browserCell setTitle:[self.orphanedAsds objectAtIndex:(NSUInteger)row]];
-}
-
-- (BOOL)browser:(NSBrowser *)sender selectRow:(NSInteger)row inColumn:(NSInteger)column {
-  [[NSWorkspace sharedWorkspace] selectFile:[self.orphanedAsds objectAtIndex:(NSUInteger)row] inFileViewerRootedAtPath:nil];
-  return YES;
-}
-
-- (void)addOrphanedAsd:(NSString *)filename {
+- (void)addOrphanedAsd:(NSString *)filename libraryPath:(NSString *)libraryPath {
   [self.orphanedAsds addObject:filename];
+  [self.displayNames addObject:[filename substringFromIndex:libraryPath.length]];
+}
+
+- (void)clearOrphanedAsds {
+  [self.orphanedAsds removeAllObjects];
+  [self.displayNames removeAllObjects];
 }
 
 - (void)dealloc {
   [_orphanedAsds release];
+  [_displayNames release];
   [super dealloc];
 }
 

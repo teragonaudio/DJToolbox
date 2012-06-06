@@ -35,7 +35,7 @@ static NSString *const kiTunesTopLevelSubfolder = @"/iTunes Media/Music";
 #pragma mark Ableton Live Tab
 @property (assign) IBOutlet NSTextField *unwarpedTracksOutputFolderTextField;
 @property (assign) IBOutlet NSButton *unwarpedTracksGeneratePlaylistButton;
-@property (assign) IBOutlet NSBrowser *orphanedAsdsBrowser;
+@property (assign) IBOutlet NSTableView *orphanedAsdsBrowser;
 @property (assign) IBOutlet NSButton *findOrphanedAsdsButton;
 @property (assign, nonatomic) OrphanedAsdsController *orphanedAsdsController;
 - (IBAction)browseUnwarpedTracksOutputFolder:(id)sender;

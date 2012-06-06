@@ -71,6 +71,7 @@
   [self.unwarpedTracksOutputFolderTextField setStringValue:[self lastUnwarpedTracksOutputFolder]];
   self.orphanedAsdsController = [[OrphanedAsdsController alloc] init];
   [self.orphanedAsdsBrowser setDelegate:self.orphanedAsdsController];
+  [self.orphanedAsdsBrowser setDataSource:self.orphanedAsdsController];
   [self.orphanedAsdsBrowser setAction:@selector(revealFileInFinder:)];
 }
 
@@ -194,7 +195,7 @@
           if([extension isEqualToString:@"asd"]) {
             NSString *musicFileName = [absoluteItemPath substringToIndex:lastDot.location];
             if(![fileManager fileExistsAtPath:musicFileName]) {
-              [self.orphanedAsdsController addOrphanedAsd:absoluteItemPath];
+              [self.orphanedAsdsController addOrphanedAsd:absoluteItemPath libraryPath:self.currentLibraryLocation];
               numFilesFound++;
               if(numFilesFound == 1) {
                 [self setProgressMessage:[NSString stringWithFormat:@"%d file found", numFilesFound]];
@@ -217,7 +218,7 @@
   [_progressIndicator startAnimation:sender];
   NSString *topDirectory = [self.currentLibraryLocation stringByAppendingString:kiTunesTopLevelSubfolder];
   NSInteger numFilesFound = [self searchForOrphanedAsds:topDirectory numFilesFound:0];
-  [self.orphanedAsdsBrowser reloadColumn:0];
+  [self.orphanedAsdsBrowser reloadData];
   [_progressIndicator stopAnimation:sender];
   [self setProgressMessage:[NSString stringWithFormat:@"Done, %d files found", numFilesFound]];
   [self.findOrphanedAsdsButton setEnabled:YES];
