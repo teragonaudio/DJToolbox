@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "LibraryLocationProvider.h"
 
-@class OrphanedAsdsController;
+@class FoundFilesController;
 
 static NSString *const kDefaultsKeyPastLibraryLocations = @"Past Library Locations";
 static NSString *const kDefaultsKeyLastLibraryLocation = @"Last Library Location";
@@ -37,7 +37,7 @@ static NSString *const kiTunesTopLevelSubfolder = @"/iTunes Media/Music";
 @property (assign) IBOutlet NSButton *unwarpedTracksGeneratePlaylistButton;
 @property (assign) IBOutlet NSTableView *orphanedAsdsBrowser;
 @property (assign) IBOutlet NSButton *findOrphanedAsdsButton;
-@property (assign, nonatomic) OrphanedAsdsController *orphanedAsdsController;
+@property (assign, nonatomic) FoundFilesController *orphanedAsdsController;
 - (IBAction)browseUnwarpedTracksOutputFolder:(id)sender;
 - (IBAction)generateUnwarpedTracksPlaylist:(id)sender;
 - (IBAction)findOrphanedAsds:(id)sender;
@@ -59,7 +59,7 @@ static NSString *const kiTunesTopLevelSubfolder = @"/iTunes Media/Music";
 @property (assign) IBOutlet NSButton *findOrphanedTracksButton;
 @property (assign) IBOutlet NSButton *addOrphanedTracksToLibraryButton;
 @property (assign) IBOutlet NSTableView *orphanedTracksBrowser;
-@property (assign, nonatomic) OrphanedAsdsController *orphanedTracksController;
+@property (assign, nonatomic) FoundFilesController *orphanedTracksController;
 - (IBAction)findOrphanedFiles:(id)sender;
 - (IBAction)addOrphanedTracksToLibrary:(id)sender;
 

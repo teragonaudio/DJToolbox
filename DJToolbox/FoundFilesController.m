@@ -5,9 +5,9 @@
 //
 
 
-#import "OrphanedAsdsController.h"
+#import "FoundFilesController.h"
 
-@interface OrphanedAsdsController ()
+@interface FoundFilesController ()
 
 @property (assign, nonatomic) NSMutableArray *orphanedAsds;
 @property (assign, nonatomic) NSMutableArray *displayNames;
@@ -15,7 +15,7 @@
 @end
 
 
-@implementation OrphanedAsdsController
+@implementation FoundFilesController
 
 @synthesize orphanedAsds = _orphanedAsds;
 @synthesize displayNames = _displayNames;

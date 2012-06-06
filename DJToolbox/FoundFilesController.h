@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "FilePathnameProvider.h"
 
-@interface OrphanedAsdsController : NSObject <NSTableViewDelegate, NSTableViewDataSource, FilePathnameProvider>
+@interface FoundFilesController : NSObject <NSTableViewDelegate, NSTableViewDataSource, FilePathnameProvider>
 
 - (void)addOrphanedAsd:(NSString *)filename libraryPath:(NSString *)libraryPath;
 - (void)clearOrphanedAsds;

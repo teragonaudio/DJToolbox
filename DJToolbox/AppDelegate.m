@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "OrphanedAsdsController.h"
+#import "FoundFilesController.h"
 
 @implementation AppDelegate
 
@@ -71,12 +71,12 @@
   [self.libraryComboBox setStringValue:self.currentLibraryLocation];
 
   [self.unwarpedTracksOutputFolderTextField setStringValue:[self lastUnwarpedTracksOutputFolder]];
-  self.orphanedAsdsController = [[OrphanedAsdsController alloc] init];
+  self.orphanedAsdsController = [[FoundFilesController alloc] init];
   [self.orphanedAsdsBrowser setDelegate:self.orphanedAsdsController];
   [self.orphanedAsdsBrowser setDataSource:self.orphanedAsdsController];
   [self.orphanedAsdsBrowser setAction:@selector(revealFileInFinder:)];
 
-  self.orphanedTracksController = [[OrphanedAsdsController alloc] init];
+  self.orphanedTracksController = [[FoundFilesController alloc] init];
   [self.orphanedTracksBrowser setDelegate:self.orphanedTracksController];
   [self.orphanedTracksBrowser setDataSource:self.orphanedTracksController];
 }
