@@ -38,6 +38,7 @@
 		24C423591566F41A00D55214 /* LibraryLocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LibraryLocationProvider.h; path = Protocols/LibraryLocationProvider.h; sourceTree = "<group>"; };
 		24C423591566F41A00D55215 /* OrphanedAsdsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrphanedAsdsController.m; sourceTree = "<group>"; };
 		24C423591566F41A00D55217 /* OrphanedAsdsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrphanedAsdsController.h; sourceTree = "<group>"; };
+		24C423591566F41A00D5521D /* FilePathnameProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilePathnameProvider.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +143,7 @@
 		24C423581566F3EE00D55214 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				24C423591566F41A00D5521D /* FilePathnameProvider.h */,
 				24C423591566F41A00D55214 /* LibraryLocationProvider.h */,
 			);
 			name = Protocols;
