@@ -6,5 +6,6 @@
 
 
 @protocol FilePathnameProvider <NSObject>
-
+@required
+- (NSString *)pathForSelectedCell:(NSTableView *)tableView;
 @end

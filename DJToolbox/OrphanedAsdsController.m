@@ -32,6 +32,11 @@
   [tableCell setTitle:[self.displayNames objectAtIndex:(NSUInteger)row]];
 }
 
+- (NSString *)pathForSelectedCell:(NSTableView *)tableView {
+  NSUInteger selectedCell = (NSUInteger)[tableView selectedRow];
+  return [self.orphanedAsds objectAtIndex:selectedCell];
+}
+
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
   return [self.orphanedAsds objectAtIndex:(NSUInteger)row];
 }

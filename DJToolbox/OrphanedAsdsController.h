@@ -6,8 +6,9 @@
 
 
 #import <Foundation/Foundation.h>
+#import "FilePathnameProvider.h"
 
-@interface OrphanedAsdsController : NSObject <NSTableViewDelegate, NSTableViewDataSource>
+@interface OrphanedAsdsController : NSObject <NSTableViewDelegate, NSTableViewDataSource, FilePathnameProvider>
 @property (assign, nonatomic) NSMutableArray *orphanedAsds;
 @property (readonly) NSInteger count;
 
