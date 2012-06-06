@@ -357,6 +357,7 @@
                 [self setProgressMessage:[NSString stringWithFormat:@"%d files found", numFilesFound]];
               }
               NSLog(@"%@", fileUrl);
+              [self.orphanedTracksBrowser reloadData];
             }
           }
         }
