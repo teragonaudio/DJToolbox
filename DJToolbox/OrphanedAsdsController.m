@@ -29,7 +29,8 @@
 
 - (void)tableView:(NSTableView *)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
   NSCell *tableCell = cell;
-  [tableCell setTitle:[self.displayNames objectAtIndex:(NSUInteger)row]];
+  NSString *displayTitle = [@"…" stringByAppendingString:[self.displayNames objectAtIndex:(NSUInteger)row]];
+  [tableCell setTitle:displayTitle];
 }
 
 - (NSString *)pathForSelectedCell:(NSTableView *)tableView {

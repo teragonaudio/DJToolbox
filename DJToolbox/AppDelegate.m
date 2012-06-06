@@ -182,6 +182,7 @@
   NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
   NSError *error;
   NSArray *directoryContents = [fileManager contentsOfDirectoryAtPath:directory error:&error];
+  NSString *libraryPathDisplay = [self.currentLibraryLocation stringByAppendingString:@"/iTunes Media/Music"];
   for(NSString *item in directoryContents) {
     NSString *absoluteItemPath = [directory stringByAppendingFormat:@"/%@", item];
     BOOL isDirectory = NO;
@@ -196,7 +197,7 @@
           if([extension isEqualToString:@"asd"]) {
             NSString *musicFileName = [absoluteItemPath substringToIndex:lastDot.location];
             if(![fileManager fileExistsAtPath:musicFileName]) {
-              [self.orphanedAsdsController addOrphanedAsd:absoluteItemPath libraryPath:self.currentLibraryLocation];
+              [self.orphanedAsdsController addOrphanedAsd:absoluteItemPath libraryPath:libraryPathDisplay];
               numFilesFound++;
               if(numFilesFound == 1) {
                 [self setProgressMessage:[NSString stringWithFormat:@"%d file found", numFilesFound]];
