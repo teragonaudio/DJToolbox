@@ -62,5 +62,6 @@ static NSString *const kiTunesTopLevelSubfolder = @"/iTunes Media/Music";
 @property (assign, nonatomic) FoundFilesController *orphanedTracksController;
 - (IBAction)findOrphanedFiles:(id)sender;
 - (IBAction)addOrphanedTracksToLibrary:(id)sender;
+- (IBAction)revealOrphanedTracksInFinder:(id)sender;
 
 @end

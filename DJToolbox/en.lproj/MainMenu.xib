@@ -601,7 +601,6 @@
 												<int key="NSvFlags">268</int>
 												<string key="NSFrame">{{176, 195}, {152, 17}}</string>
 												<reference key="NSSuperview" ref="1017876231"/>
-												<reference key="NSNextKeyView" ref="580940834"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="251013703">
 													<int key="NSCellFlags">68288064</int>
@@ -847,7 +846,7 @@
 																<string key="NSFrame">{{10, 5}, {130, 32}}</string>
 																<reference key="NSSuperview" ref="704311817"/>
 																<reference key="NSWindow"/>
-																<reference key="NSNextKeyView" ref="759429089"/>
+																<reference key="NSNextKeyView" ref="33347490"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSButtonCell" key="NSCell" id="59989220">
 																	<int key="NSCellFlags">67239424</int>
@@ -970,6 +969,29 @@
 																<reference key="NSHScroller" ref="613032340"/>
 																<reference key="NSContentView" ref="196440894"/>
 																<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
+															</object>
+															<object class="NSButton" id="33347490">
+																<reference key="NSNextResponder" ref="704311817"/>
+																<int key="NSvFlags">1316</int>
+																<string key="NSFrame">{{135, 5}, {140, 32}}</string>
+																<reference key="NSSuperview" ref="704311817"/>
+																<reference key="NSWindow"/>
+																<reference key="NSNextKeyView" ref="759429089"/>
+																<bool key="NSEnabled">YES</bool>
+																<object class="NSButtonCell" key="NSCell" id="922485931">
+																	<int key="NSCellFlags">67239424</int>
+																	<int key="NSCellFlags2">134217728</int>
+																	<string key="NSContents">Reveal in Finder</string>
+																	<reference key="NSSupport" ref="1035220921"/>
+																	<reference key="NSControlView" ref="33347490"/>
+																	<int key="NSButtonFlags">-2038021889</int>
+																	<int key="NSButtonFlags2">129</int>
+																	<reference key="NSAlternateImage" ref="1035220921"/>
+																	<string key="NSAlternateContents"/>
+																	<string key="NSKeyEquivalent"/>
+																	<int key="NSPeriodicDelay">400</int>
+																	<int key="NSPeriodicInterval">75</int>
+																</object>
 															</object>
 														</array>
 														<string key="NSFrame">{{1, 1}, {493, 372}}</string>
@@ -1456,6 +1478,14 @@
 					</object>
 					<int key="connectionID">731</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">revealOrphanedTracksInFinder:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="33347490"/>
+					</object>
+					<int key="connectionID">735</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -1884,6 +1914,7 @@
 							<reference ref="889000221"/>
 							<reference ref="724764292"/>
 							<reference ref="759429089"/>
+							<reference ref="33347490"/>
 						</array>
 						<reference key="parent" ref="592388222"/>
 					</object>
@@ -2065,6 +2096,19 @@
 						<reference key="object" ref="251013703"/>
 						<reference key="parent" ref="582492477"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">732</int>
+						<reference key="object" ref="33347490"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="922485931"/>
+						</array>
+						<reference key="parent" ref="617207685"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">733</int>
+						<reference key="object" ref="922485931"/>
+						<reference key="parent" ref="33347490"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -2158,12 +2202,14 @@
 				<string key="728.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="729.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="730.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="732.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="733.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">731</int>
+			<int key="maxID">735</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2179,6 +2225,7 @@
 						<string key="findOrphanedAsds:">id</string>
 						<string key="findOrphanedFiles:">id</string>
 						<string key="generateUnwarpedTracksPlaylist:">id</string>
+						<string key="revealOrphanedTracksInFinder:">id</string>
 						<string key="useMineForConflictedFile:">id</string>
 						<string key="useTheirsForConflictedFile:">id</string>
 					</dictionary>
@@ -2213,6 +2260,10 @@
 						</object>
 						<object class="IBActionInfo" key="generateUnwarpedTracksPlaylist:">
 							<string key="name">generateUnwarpedTracksPlaylist:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="revealOrphanedTracksInFinder:">
+							<string key="name">revealOrphanedTracksInFinder:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="useMineForConflictedFile:">
