@@ -38,6 +38,16 @@
 @synthesize orphanedTracksController = _orphanedTracksController;
 
 
+- (IBAction)showPreferences:(id)sender {
+  [NSApp beginSheet:preferencesPanel modalForWindow:_window modalDelegate:self didEndSelector:nil contextInfo:nil];
+}
+
+- (IBAction)hidePreferences:(id)sender {
+  [NSApp endSheet:preferencesPanel];
+  [preferencesPanel orderOut:sender];
+}
+
+
 - (NSString *)getiTunesLibraryLocation {
   return self.currentLibraryLocation;
 }

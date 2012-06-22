@@ -18,7 +18,9 @@ static NSString *const kDefaultsKeyLastUnwarpedTracksOutputFolder = @"Last Unwar
 static NSString *const kDefaultOutputPlaylistName = @"/unwarped.m3u8";
 static NSString *const kiTunesTopLevelSubfolder = @"/iTunes Media/Music";
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, LibraryLocationProvider>
+@interface AppDelegate : NSObject <NSApplicationDelegate, LibraryLocationProvider> {
+  IBOutlet NSPanel *preferencesPanel;
+}
 
 #pragma mark Internal Members
 @property (assign, nonatomic) NSString *currentLibraryLocation;
@@ -31,6 +33,10 @@ static NSString *const kiTunesTopLevelSubfolder = @"/iTunes Media/Music";
 @property (assign) IBOutlet NSTextField *statusTextField;
 @property (assign) IBOutlet NSProgressIndicator *progressIndicator;
 - (IBAction)browseLibraryLocation:(id)sender;
+
+#pragma mark Preferences
+- (IBAction)showPreferences:(id)sender;
+- (IBAction)hidePreferences:(id)sender;
 
 #pragma mark Ableton Live Tab
 @property (assign) IBOutlet NSTextField *unwarpedTracksOutputFolderTextField;
